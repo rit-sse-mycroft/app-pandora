@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<grammar xmlns="http://www.w3.org/2001/06/grammar" xml:lang="en-US" root="toplevel" version="1.0" tag-format="semantics/1.0">
+  <rule id="volumeTypes" scope="private">
+    <one-of>
+      <item>up</item>
+      <item>down</item>
+    </one-of>
+  </rule>
+  <rule id="volume" scope="private">
+    <item>turn</item>
+    <ruleref uri="#volumeTypes"/>
+    <tag>out.action=rules.volumeTypes;</tag>
+    <item repeat="0-1">the volume on</item>
+  </rule>
+  <rule id="actions" scope="private">
+    <item>play</item>
+    <item>pause<tag>out="play";</tag></item>
+    <item>next</item>
+    <item>play next<tag>out="next";</tag></item>
+    <item>play the next<tag>out="next";</tag></item>
+    <item>thumb up</item>
+    <item>thumb down</item>
+  </rule>
+  <rule id="perform_action" scope="private">
+    <ruleref uri="#actions"/>
+    <tag>out.action=rules.actions;</tag>
+    <item repeat="0-1">the</item>
+    <item repeat="0-1">song </item>
+    <item repeat="0-1">on</item>
+  </rule>
+  <rule id="topLevel" scope="private">
+    <item>Mycroft</item>
+    <one-of>
+      <item>
+        <ruleref uri="#perform_action"/>
+      </item>
+      <item>
+        <ruleref uri="#volume"/>
+      </item>
+    </one-of>
+    <item>pandora</item>
+  </rule>
+</grammar>
