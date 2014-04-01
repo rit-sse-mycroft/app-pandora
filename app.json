@@ -1,0 +1,15 @@
+{
+    "version": "0.0.0",
+    "name": "pandora",
+    "displayName": "GTV Pandora",
+    "instanceId": "pandora",
+    "capabilities": {
+        "pandora": "0.0.1"
+    },
+    "API": 0,
+    "description": "Control Pandora on the gtv",
+    "dependencies": {
+        "gtv": "0.0.1",
+        "stt": "0.0.1"
+    }
+}

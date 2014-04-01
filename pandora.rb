@@ -1,0 +1,21 @@
+require 'mycroft'
+
+class Pandora < Mycroft::Client
+
+  def initialize(host, port)
+    @key = '/path/to/key'
+    @cert = '/path/to/cert'
+    @manifest = './app.json'
+    @verified = false
+    super
+  end
+
+  on 'APP_DEPENDENCY' do |data|
+    # Your code here
+  end
+
+  # Any other event handlers
+
+end
+
+Mycroft.start(Pandora)
