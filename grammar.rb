@@ -16,6 +16,7 @@ module JokeGrammar
 
     private_rule 'volume' do
       item 'turn'
+      item 'the volume', repeat: '0-1'
       reference '#volumeTypes'
       tag 'out.action=rules.volumeTypes;'
       item 'the volume on', repeat: '0-1'
@@ -33,8 +34,6 @@ module JokeGrammar
       item 'play the next' do
         tag 'out="next";'
       end
-      item 'thumb up'
-      item 'thumb down'
     end
 
     private_rule 'perform_action' do
@@ -48,6 +47,7 @@ module JokeGrammar
     private_rule 'topLevel' do
       item "Mycroft"
       one_of do
+        item 'open'
         reference_item '#perform_action'
         reference_item '#volume'
       end

@@ -8,6 +8,7 @@
   </rule>
   <rule id="volume" scope="private">
     <item>turn</item>
+    <item repeat="0-1">the volume</item>
     <ruleref uri="#volumeTypes"/>
     <tag>out.action=rules.volumeTypes;</tag>
     <item repeat="0-1">the volume on</item>
@@ -18,8 +19,6 @@
     <item>next</item>
     <item>play next<tag>out="next";</tag></item>
     <item>play the next<tag>out="next";</tag></item>
-    <item>thumb up</item>
-    <item>thumb down</item>
   </rule>
   <rule id="perform_action" scope="private">
     <ruleref uri="#actions"/>
@@ -31,6 +30,7 @@
   <rule id="topLevel" scope="private">
     <item>Mycroft</item>
     <one-of>
+      <item>open</item>
       <item>
         <ruleref uri="#perform_action"/>
       </item>
