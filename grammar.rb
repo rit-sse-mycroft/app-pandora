@@ -19,6 +19,7 @@ module JokeGrammar
       item 'the volume', repeat: '0-1'
       reference '#volumeTypes'
       tag 'out.action=rules.volumeTypes;'
+      item 'on'
       item 'the volume on', repeat: '0-1'
     end
 

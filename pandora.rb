@@ -61,4 +61,4 @@ class Pandora < Mycroft::Client
   end
 end
 
-Mycroft.start(Pandora)
+Mycroft.start(Pandora, ARGV[0], ARGV[1])
