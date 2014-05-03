@@ -20,11 +20,13 @@ class Pandora < Mycroft::Client
   end
 
   on 'APP_DEPENDENCY' do |data|
+    update_dependencies(data)
+    puts @dependencies
     if not @dependencies['stt'].nil?
-      if @dependencies['stt']['stt1'] == 'up' and @dependencies['pandora']['pandora'] == 'up' and not @up
+      if @dependencies['stt']['stt1'] == 'up' and @dependencies['gtv']['google-tv-remote'] == 'up' and not @up
         up
         @up = true
-      elsif (@dependencies['stt']['stt1'] == 'down' or @dependencies['pandora']['pandora'] == 'down') and @up
+      elsif (@dependencies['stt']['stt1'] == 'down' or @dependencies['gtv']['google-tv-remote'] == 'down') and @up
         down
         @up = false
       end
@@ -41,8 +43,10 @@ class Pandora < Mycroft::Client
 
   on 'MSG_BROADCAST' do |data|
     grammar = data['content']
+    puts grammar
     if grammar['grammar'] == 'pandora'
       action = grammar['tags']['action']
+      puts action
       unless action.nil?
         data =  {keycode: @keycodes[action]}
         query('gtv', 'send_keycode', data)

@@ -5,7 +5,7 @@ module JokeGrammar
 
   extend self
 
-  grammar 'toplevel' do
+  grammar 'topLevel' do
 
     private_rule 'volumeTypes' do
       one_of do
@@ -24,16 +24,18 @@ module JokeGrammar
     end
 
     private_rule 'actions' do
-      item 'play'
-      item 'pause' do
-        tag 'out="play";'
-      end
-      item 'next'
-      item 'play next' do
-        tag 'out="next";'
-      end
-      item 'play the next' do
-        tag 'out="next";'
+      one_of do
+        item 'play'
+        item 'pause' do
+          tag 'out="play";'
+        end
+        item 'next'
+        item 'play next' do
+          tag 'out="next";'
+        end
+        item 'play the next' do
+          tag 'out="next";'
+        end
       end
     end
 
