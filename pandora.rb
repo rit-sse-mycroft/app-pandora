@@ -9,6 +9,7 @@ class Pandora < Mycroft::Client
     @verified = false
     @sent_grammar = false
     @up = false
+    @dependencies = {}
     @keycodes = {
       'play' => 'KEYCODE_MEDIA_PLAY_PAUSE',
       'next' => 'KEYCODE_MEDIA_NEXT',
